@@ -37,11 +37,12 @@ public class DemoSbProjectApplicationTests {
 
     @BeforeAll
     public static void setup() {
-        stubFor(WireMock.get(urlMatching("/xml/30/01/2025"))
+        stubFor(WireMock
+                .get(urlMatching("/xml/30/01/2025"))
                 .willReturn(aResponse()
                         .withStatus(HttpStatus.OK.value())
-                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)
-                        .withBodyFile("xml/positive_response.xml")));
+                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_XML_VALUE)));
+
 
         stubFor(WireMock.get(urlMatching("/xml/31/01/2025"))
                 .willReturn(aResponse()
