@@ -12,7 +12,6 @@ import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,12 +24,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 @AutoConfigureMockMvc
 @AutoConfigureWireMock(port = 0)
-@ActiveProfiles("integration")
 public class DemoSbProjectApplicationTests {
+
     @Autowired
     private WireMockServer wireMockServer;
+
     @Autowired
     private MockMvc mockMvc;
+
     @Autowired
     private ExchangeRatesRepository repository;
 
@@ -50,7 +51,7 @@ public class DemoSbProjectApplicationTests {
 
     @Test
     public void happyPathXmlTest() throws Exception {
-        mockMvc.perform(get("/exchanger")
+        mockMvc.perform(get("/exchangerate")
                         .param("currency", "AUD")
                         .param("date", "2025-01-30")
                         .param("dataSource", "xml"))
@@ -60,7 +61,7 @@ public class DemoSbProjectApplicationTests {
     @Test
     @Sql("/files/database/data.sql")
     public void happyPathDatabaseTest() throws Exception {
-        mockMvc.perform(get("/exchanger")
+        mockMvc.perform(get("/exchangerate")
                         .param("currency", "AUD")
                         .param("date", "2025-01-10")
                         .param("dataSource", "database"))
@@ -70,7 +71,7 @@ public class DemoSbProjectApplicationTests {
     @Test
     @Sql("/files/database/data.sql")
     public void noCurrencyFoundInDatabaseTest() throws Exception {
-        mockMvc.perform(get("/exchanger")
+        mockMvc.perform(get("/exchangerate")
                         .param("currency", "XXX")
                         .param("date", "2025-01-30")
                         .param("dataSource", "database"))
@@ -79,10 +80,11 @@ public class DemoSbProjectApplicationTests {
 
     @Test
     public void noXmlDtoTest() throws Exception {
-        mockMvc.perform(get("/exchanger")
+        mockMvc.perform(get("/exchangerate")
                         .param("currency", "AUD")
                         .param("date", "2025-01-31")
                         .param("dataSource", "xml"))
                 .andExpect(content().string("Unable to get exchange rate data from the source."));
     }
+
 }
