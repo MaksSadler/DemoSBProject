@@ -29,5 +29,6 @@ public class ExchangeRateXmlService implements ExchangeRateService {
     @Override
     public DataSource getDataSource() {
         return DataSource.XML;
+
     }
 }
