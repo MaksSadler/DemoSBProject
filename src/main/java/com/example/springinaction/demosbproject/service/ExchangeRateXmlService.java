@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 @Component
 public class ExchangeRateXmlService implements ExchangeRateService {
+
     private final ExchangeRatesXmlUtil client;
 
     public ExchangeRateXmlService(ExchangeRatesXmlUtil client) {
