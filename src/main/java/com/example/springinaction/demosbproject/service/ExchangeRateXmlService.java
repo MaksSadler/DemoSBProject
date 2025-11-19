@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 @Component
 public class ExchangeRateXmlService implements ExchangeRateService {
+
     private final ExchangeRatesXmlUtil client;
 
     public ExchangeRateXmlService(ExchangeRatesXmlUtil client) {
@@ -29,5 +30,6 @@ public class ExchangeRateXmlService implements ExchangeRateService {
     @Override
     public DataSource getDataSource() {
         return DataSource.XML;
+
     }
 }
