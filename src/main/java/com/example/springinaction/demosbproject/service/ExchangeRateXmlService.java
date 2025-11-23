@@ -1,5 +1,6 @@
 package com.example.springinaction.demosbproject.service;
 
+import com.example.springinaction.demosbproject.service.event.ExchangeRateEvent;
 import com.example.springinaction.demosbproject.util.ExchangeRatesXmlUtil;
 import com.example.springinaction.demosbproject.util.dto.ExchangeRatesXmlDTO;
 import com.example.springinaction.demosbproject.dataEnum.DataSource;
@@ -31,5 +32,10 @@ public class ExchangeRateXmlService implements ExchangeRateService {
     public DataSource getDataSource() {
         return DataSource.XML;
 
+    }
+
+    @Override
+    public String createExchangeRate(ExchangeRateEvent event) {
+        return "";
     }
 }
