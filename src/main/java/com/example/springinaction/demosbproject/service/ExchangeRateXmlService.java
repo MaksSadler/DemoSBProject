@@ -1,5 +1,6 @@
 package com.example.springinaction.demosbproject.service;
 
+import com.example.springinaction.core.ExchangeRateEvent;
 import com.example.springinaction.demosbproject.util.ExchangeRatesXmlUtil;
 import com.example.springinaction.demosbproject.util.dto.ExchangeRatesXmlDTO;
 import com.example.springinaction.demosbproject.dataEnum.DataSource;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 
 @Component
 public class ExchangeRateXmlService implements ExchangeRateService {
+
     private final ExchangeRatesXmlUtil client;
 
     public ExchangeRateXmlService(ExchangeRatesXmlUtil client) {
@@ -29,5 +31,11 @@ public class ExchangeRateXmlService implements ExchangeRateService {
     @Override
     public DataSource getDataSource() {
         return DataSource.XML;
+
+    }
+
+    @Override
+    public String createExchangeRate(ExchangeRateEvent event) {
+        return "";
     }
 }
