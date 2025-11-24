@@ -1,7 +1,7 @@
 package com.example.springinaction.demosbproject.service;
 
+import com.example.springinaction.core.ExchangeRateEvent;
 import com.example.springinaction.demosbproject.dataEnum.DataSource;
-import com.example.springinaction.demosbproject.service.event.ExchangeRateEvent;
 
 import java.time.LocalDate;
 

@@ -1,9 +1,9 @@
 package com.example.springinaction.demosbproject.service;
 
+import com.example.springinaction.core.ExchangeRateEvent;
 import com.example.springinaction.demosbproject.repository.ExchangeRatesRepository;
 import com.example.springinaction.demosbproject.repository.dto.ExchangeRatesDatabaseDTO;
 import com.example.springinaction.demosbproject.dataEnum.DataSource;
-import com.example.springinaction.demosbproject.service.event.ExchangeRateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 @Component
 public class ExchangeRateDatabaseService implements ExchangeRateService {
     private final ExchangeRatesRepository repository;
-    private KafkaTemplate<String, ExchangeRateEvent> kafkaTemplate;
+    private final KafkaTemplate<String, ExchangeRateEvent> kafkaTemplate;
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     public ExchangeRateDatabaseService(ExchangeRatesRepository repository, KafkaTemplate<String, ExchangeRateEvent> kafkaTemplate) {

@@ -15,7 +15,7 @@ public class KafkaConfiguration {
         return TopicBuilder.name("exchange-rate-created-events-topic")
                 .partitions(3)
                 .replicas(1)
-                .configs(Map.of("min.insync.replicas", "2"))
+                .configs(Map.of("min.insync.replicas", "1"))
                 .build();
     }
 }
